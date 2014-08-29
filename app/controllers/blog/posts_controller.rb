@@ -5,13 +5,17 @@ class Blog::PostsController < ApplicationController
   end
 
   def new
+    @post = BlogPost.new
   end
 
   def create
     @post = BlogPost.new(post_params)
 
-    @post.save
-    redirect_to @post
+    if @post.save
+      redirect_to @post
+    else
+      render 'new'
+    end
   end
 
   def show
