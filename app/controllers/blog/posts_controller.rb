@@ -8,6 +8,10 @@ class Blog::PostsController < ApplicationController
     @post = BlogPost.new
   end
 
+  def edit
+    @post = BlogPost.find(params[:id])
+  end
+
   def create
     @post = BlogPost.new(post_params)
 
@@ -15,6 +19,16 @@ class Blog::PostsController < ApplicationController
       redirect_to @post
     else
       render 'new'
+    end
+  end
+
+  def update
+    @post = BlogPost.find(params[:id])
+
+    if @post.update(post_params)
+      redirect_to @post
+    else
+      render 'edit'
     end
   end
 
