@@ -36,6 +36,13 @@ class Blog::PostsController < ApplicationController
     @post = BlogPost.find(params[:id])
   end
 
+  def destroy
+    @post = BlogPost.find(params[:id])
+    @post.destroy
+
+    redirect_to blog_root_path
+  end
+
   private
     def post_params
       params.require(:blog_post).permit(:title, :text)

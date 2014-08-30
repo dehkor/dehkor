@@ -6,6 +6,10 @@
       <h2><%= link_to post.title, blog_post_path(post) %></h2>
       <div><%= post.text %></div>
       <div><%= link_to "Edit", edit_blog_post_path(post) %></div>
+      <div>
+        <%= link_to 'Destroy', blog_post_path(post),
+        method: :delete, data: { confirm: 'Are you sure?' } %>
+      </div>
     </div>
   <% end %>
 </div>
